@@ -12,4 +12,7 @@ const Category = connection.define('categories',{
     }
 });
 
+//Força a atualização da tabela no banco usar apenas quando for criar as tabelas
+//Category.sync({force:true});
+
 module.exports = Category
