@@ -1,3 +1,4 @@
+/*Esse arquivo é responsavel pela criação da tabela categories*/
 const Sequelize = require("sequelize");
 const connection = require("../database/database");
 
