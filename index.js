@@ -3,6 +3,8 @@ const express = require("express");
 const app =express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+//Importa or arquivo de rota do categories
+const categoriesController=require("./categories/CategoriesController");
 
 //View engine (Motor de redenrização de html)
 app.set('view engine','ejs');
@@ -27,7 +29,12 @@ connection
 
 app.get("/",(req,res)=>{
     res.render("index");
-})
+});
+
+/*Aqui diz para aplicação onde estão as rotas do CategoriesController
+Tambem é um prefixo de tudo que vai antes do barra categories*/
+app.use("/",categoriesController);
+
 
 app.listen(4000,() => {
     console.log("O servidor está rodando na porta 4000");
