@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const connection = require("./database/database");
 //Importa or arquivo de rota do categories
 const categoriesController=require("./categories/CategoriesController");
+const articlesController =require("./articles/ArticlesController");
 
 //View engine (Motor de redenrização de html)
 app.set('view engine','ejs');
@@ -34,6 +35,7 @@ app.get("/",(req,res)=>{
 /*Aqui diz para aplicação onde estão as rotas do CategoriesController
 Tambem é um prefixo de tudo que vai antes do barra categories*/
 app.use("/",categoriesController);
+app.use("/",articlesController);
 
 
 app.listen(4000,() => {
