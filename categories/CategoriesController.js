@@ -23,7 +23,11 @@ router.post("/categories/save",(req,res)=>{
 });
 
 router.get("/admin/categories",(req,res)=>{
-    res.render("admin/categories/index");
+    //metodo para trazer as categorias do banco
+    Category.findAll().then(categories =>{
+        res.render("admin/categories/index",{categories: categories});
+    });
+    
 });
 
 //Exportar essa variavel para link com o arquivo do index.js

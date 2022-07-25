@@ -15,12 +15,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+          
+                <% categories.forEach(category =>{ %>
+                    <tr>
+                        <th><%= category.id %></th>
+                        <th><%= category.title %></th>
+                        <th><%= category.slug %></th>
+                        <th>Ações</th>
+                    </tr>
+
+                <% }) %>
+            
         </tbody>
     </table>
 
