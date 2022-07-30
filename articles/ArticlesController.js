@@ -37,5 +37,24 @@ router.post("/articles/save",(req,res)=>{
     });
 });
 
+router.post("/articles/delete",(req,res)=>{
+    var id =req.body.id;
+    if(id != undefined){
+        if(!isNaN(id)){//verifica se o id não é numerico ou não
+           Article.destroy({
+                where:{//compara se é igual a variavel id
+                    id:id 
+                }
+            }).then(()=>{
+                res.redirect("/admin/articles");
+            })  
+        }else{
+            res.redirect("/admin/articles");
+        }
+    }else{ //se for nulo
+        res.redirect("/admin/articles");
+    }
+});
+
 //Exportar essa variavel para link com o arquivo do index.js
 module.exports= router;
