@@ -2,10 +2,10 @@ const express = require("express");
 //Necessita dessa variavel visto que vamos chamar rotas apartir daqui alem do inde.js
 const router = express.Router();
 const Category = require("../categories/Category");
-const Articles = require("./Article");
+const Article = require("./Article");
 const slugify = require("slugify");
 
-router.get("/articles",(req,res)=>{
+router.get("/admin/articles",(req,res)=>{
 
 res.send("rota Artigos")
 
@@ -29,7 +29,9 @@ router.post("/articles/save",(req,res)=>{
         body:body,
         //esse campo é criado do relacionamento entre tabelas seria a chave estrangeira
         categoryId:category 
-    })
+    }).then(()=>{
+        res.redirect("/admin/articles");
+    });
 });
 
 //Exportar essa variavel para link com o arquivo do index.js
