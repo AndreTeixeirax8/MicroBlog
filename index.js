@@ -35,7 +35,11 @@ connection
 
 
 app.get("/",(req,res)=>{
-    res.render("index");
+    Article.findAll().then(articles =>{
+        //Pesquisa os artighos para home
+        res.render("index",{articles:articles}); 
+    });
+    
 });
 
 /*Aqui diz para aplicação onde estão as rotas do CategoriesController
