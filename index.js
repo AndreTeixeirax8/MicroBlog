@@ -1,5 +1,6 @@
 /*Dependencias do projeto
 Link para baixar o TinyMCE = https://www.tiny.cloud/get-tiny/self-hosted/
+Link para tradução = https://www.tiny.cloud/get-tiny/language-packages/
 */
 const express = require("express");
 const app =express();
