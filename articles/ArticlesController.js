@@ -9,7 +9,7 @@ res.send("rota Artigos")
 });
 
 router.get("/admin/articles/new",(req,res)=>{
-
+    res.render("admin/articles/new");
 });
 
 //Exportar essa variavel para link com o arquivo do index.js

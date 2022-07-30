@@ -1,4 +1,6 @@
-// Dependencias do projeto
+/*Dependencias do projeto
+Link para baixar o TinyMCE = https://www.tiny.cloud/get-tiny/self-hosted/
+*/
 const express = require("express");
 const app =express();
 const bodyParser = require("body-parser");
