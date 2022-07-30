@@ -1,0 +1,40 @@
+<%-include('../../partials/header.ejs') %>
+<%-include('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>Artigos</h2>
+    <a class="btn btn-success" href="/admin/articles/new">Criar novo Artigo</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Slug</th>
+                <th>Category</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+</div>
+
+<%-include('../../partials/footer.ejs') %>
+
+<script>
+//Cofirmação para o metodo delete
+    function confirmarDelecao(event,form){
+
+        event.preventDefault();
+        //o confirma retora um verdadeiro ou falso
+        var decision = confirm("Você tem certeza que quer excluir? O mesmo não poderá ser recuperado");
+        if(decision){//se retornar verdade ele deleta 
+            form.submit();
+        }
+    }
+
+</script>

@@ -7,7 +7,7 @@ const slugify = require("slugify");
 
 router.get("/admin/articles",(req,res)=>{
 
-res.send("rota Artigos")
+res.render("admin/articles/index");
 
 });
 
