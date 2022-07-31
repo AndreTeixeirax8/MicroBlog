@@ -56,5 +56,26 @@ router.post("/articles/delete",(req,res)=>{
     }
 });
 
+router.get("/admin/articles/edit/:id", (req,res)=>{
+//recebe o id do artigo que vem na rota 
+var id = req.params.id;
+    //pesquisa um artigo pelo id 
+    Article.findByPk(id).then(article =>{
+        if(article != undefined){
+            //lista de categorias do sistema
+            Category.findAll().then(categories=>{
+                res.render("admin/articles/edit",{categories:categories})
+            });
+
+        }else{
+        //se houver algum erro ele redireciona para home
+        res.redirect("/");
+        }
+    }).catch(err =>{
+        //se houver algum erro ele redireciona para home
+        res.redirect("/");
+    });
+});
+
 //Exportar essa variavel para link com o arquivo do index.js
 module.exports= router;
