@@ -64,7 +64,7 @@ var id = req.params.id;
         if(article != undefined){
             //lista de categorias do sistema
             Category.findAll().then(categories=>{
-                res.render("admin/articles/edit",{categories:categories})
+                res.render("admin/articles/edit",{article: article, categories: categories})
             });
 
         }else{
