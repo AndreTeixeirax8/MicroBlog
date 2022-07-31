@@ -12,7 +12,7 @@ const Article = connection.define('articles',{
         type: Sequelize.STRING,
         allowNull:false
     },
-    body:{
+    body:{ //aqui guarda o corpo de um artigo
         type: Sequelize.TEXT,
         allowNull:false
     }

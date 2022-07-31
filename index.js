@@ -48,6 +48,24 @@ app.use("/",categoriesController);
 app.use("/",articlesController);
 
 
+app.get("/:slug",(req,res)=>{
+    //rota de busca por slug
+    var slug = req.params.slug;
+    Article.findOne({
+        where:{
+            slug:slug
+        }
+    }).then(article =>{
+        if(article != undefined){//se localiza o slug passa pra view o artigo 
+            res.render("article",{article:article});
+        }else{
+            res.redirect("/");
+        }
+    }).catch(err =>{
+        res.redirect("/");
+    });
+});
+
 app.listen(4000,() => {
     console.log("O servidor está rodando na porta 4000");
 })
