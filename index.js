@@ -35,7 +35,11 @@ connection
 
 
 app.get("/",(req,res)=>{
-    Article.findAll().then(articles =>{
+    Article.findAll({
+        order:[
+            ['id','DESC']//ordenação dos artigos na home
+        ]
+    }).then(articles =>{
         //Pesquisa os artighos para home
         res.render("index",{articles:articles}); 
     });
