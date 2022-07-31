@@ -33,15 +33,18 @@ connection
             console.log(error);
         })
 
-
+//Rota home
 app.get("/",(req,res)=>{
     Article.findAll({
         order:[
             ['id','DESC']//ordenação dos artigos na home
         ]
     }).then(articles =>{
-        //Pesquisa os artighos para home
-        res.render("index",{articles:articles}); 
+        Category.findAll().then(categories =>{
+             //Pesquisa os artigos para home
+        res.render("index",{articles:articles,categories:categories}); 
+        });
+       
     });
     
 });
@@ -61,7 +64,10 @@ app.get("/:slug",(req,res)=>{
         }
     }).then(article =>{
         if(article != undefined){//se localiza o slug passa pra view o artigo 
-            res.render("article",{article:article});
+            Category.findAll().then(categories =>{
+                //Pesquisa os artigos para home
+           res.render("article",{article:article,categories:categories}); 
+           });
         }else{
             res.redirect("/");
         }
