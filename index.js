@@ -76,6 +76,31 @@ app.get("/:slug",(req,res)=>{
     });
 });
 
+app.get("/category/:slug",(req,res)=>{
+    var slug =req.params.slug;
+    Category.findOne({
+        where:{
+            slug:slug
+        },
+        //Aqui incluimos o Article parta fazer o JOIN na busca
+        include: [{model:Article}]
+    }).then(category =>{
+        if(category != undefined){
+            //aqui vamos re ultilizar a index.ejs geral
+            Category.findAll().then(categories =>{
+                res.render("index",{articles: category.articles, categories: categories});
+            });
+
+        }else{
+            //se for vazio volta para rota pricipal
+            res.redirect("/");
+        }
+    }).catch(err =>{
+        //se der erro  volta para rota pricipal
+        res.redirect("/");
+    })
+});
+
 app.listen(4000,() => {
     console.log("O servidor está rodando na porta 4000");
 })
