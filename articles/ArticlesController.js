@@ -103,7 +103,7 @@ router.get("/articles/page/:num",(req,res)=>{
     if(isNaN(page) || page == 1){
         offset=0;
     }else{
-        offset=parseInt(page)*4;//converte de texto para valor numerico e multiplica por 4
+        offset=parseInt(page - 1)*4;//converte de texto para valor numerico e multiplica por 4
     }
 
     /*Pesquisa a quantidade de elementos que tem na tabela 
@@ -126,7 +126,7 @@ router.get("/articles/page/:num",(req,res)=>{
         var result = {
             page:parseInt(page),//converte a string para um int
             next: next,
-            articles : articles,
+            articles : articles
         }
         //passa as categorias para view page.ejs
         Category.findAll().then(categories =>{
