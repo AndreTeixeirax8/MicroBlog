@@ -38,7 +38,8 @@ app.get("/",(req,res)=>{
     Article.findAll({
         order:[
             ['id','DESC']//ordenação dos artigos na home
-        ]
+        ],
+        limit:4 //limita em mostrar os 4 ultimos artigos na home
     }).then(articles =>{
         Category.findAll().then(categories =>{
              //Pesquisa os artigos para home

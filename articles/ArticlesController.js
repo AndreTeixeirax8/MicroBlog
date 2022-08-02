@@ -110,7 +110,10 @@ router.get("/articles/page/:num",(req,res)=>{
      e retorna (count) que o total e as rows(Linhas)*/
     Article.findAndCountAll({
         limit:4, //quantidade de artigos que vai retornar da paginação
-        offset:offset
+        offset:offset,
+        order:[
+            ['id','DESC']//ordenação dos artigos por id
+        ],
     }).then(articles =>{
 
         var next;
