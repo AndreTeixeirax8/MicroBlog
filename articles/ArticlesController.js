@@ -124,6 +124,7 @@ router.get("/articles/page/:num",(req,res)=>{
         }
 
         var result = {
+            page:parseInt(page),//converte a string para um int
             next: next,
             articles : articles,
         }
