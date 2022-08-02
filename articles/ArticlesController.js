@@ -77,5 +77,23 @@ var id = req.params.id;
     });
 });
 
+router.post("/articles/update",(req,res)=>{
+    var id = req.body.id;
+    var title = req.body.title;
+    var body = req.body.body;
+    var category = req.body.category;
+
+    Article.update({title: title, body:body,categoryId: category, slug:slugify(title)},{
+        where:{
+            id:id
+        }
+    }).then(()=>{
+        res.redirect("/admin/articles");
+    }).catch(err =>{
+        res.redirect("/");
+    });
+
+});
+
 //Exportar essa variavel para link com o arquivo do index.js
 module.exports= router;
