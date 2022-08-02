@@ -95,5 +95,39 @@ router.post("/articles/update",(req,res)=>{
 
 });
 
+//Processo de paginação
+router.get("/articles/page/:num",(req,res)=>{
+    var page = req.params.num;
+    var offset = 0;
+
+    if(isNaN(page) || page == 1){
+        offset=0;
+    }else{
+        offset=parseInt(page)*4;//converte de texto para valor numerico e multiplica por 4
+    }
+
+    //pesquisa a quantidade de elementos que tem na tabela 
+    Article.findAndCountAll({
+        limit:4, //quantidade de artigos que vai retornar da paginação
+        offset:offset
+    }).then(articles =>{
+
+        var next;
+        if(offset+4 >= articles.count){
+            next=false; //se for maior que a quantidade de registro que tem no banco ele retorna false
+        }else{
+            next =true;
+        }
+
+        var result = {
+            next: next,
+            articles : articles,
+        }
+
+        //devolve uma resposta em JSON para o navegador
+        res.json(result);
+    })
+});
+
 //Exportar essa variavel para link com o arquivo do index.js
 module.exports= router;
