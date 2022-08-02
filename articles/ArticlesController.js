@@ -106,7 +106,8 @@ router.get("/articles/page/:num",(req,res)=>{
         offset=parseInt(page)*4;//converte de texto para valor numerico e multiplica por 4
     }
 
-    //pesquisa a quantidade de elementos que tem na tabela 
+    /*Pesquisa a quantidade de elementos que tem na tabela 
+     e retorna (count) que o total e as rows(Linhas)*/
     Article.findAndCountAll({
         limit:4, //quantidade de artigos que vai retornar da paginação
         offset:offset
@@ -123,9 +124,12 @@ router.get("/articles/page/:num",(req,res)=>{
             next: next,
             articles : articles,
         }
-
+        //passa as categorias para view page.ejs
+        Category.findAll().then(categories =>{
+            res.render("admin/articles/page",{result:result, categories:categories})
+        });
         //devolve uma resposta em JSON para o navegador
-        res.json(result);
+        //res.json(result);
     })
 });
 
