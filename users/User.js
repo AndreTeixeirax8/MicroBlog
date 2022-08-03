@@ -16,6 +16,6 @@ const User = connection.define('users',{
 Se estiver true ele sempre recria a tabela se tiver false ele verifica se tem e se
 não tem ele cria */
 
-User.sync({force:false});
+//User.sync({force:false});
 
 module.exports = User
