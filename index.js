@@ -68,6 +68,19 @@ app.use("/",categoriesController);
 app.use("/",articlesController);
 app.use("/",usersController);
 
+//rota de seção
+app.get("/session",(req,res)=>{
+    req.session.treinamento="Formação nodeJS"
+    req.session.ano = 2019
+    res.send("Seção gerada");
+});
+app.get("/leitura",(req,res) =>{
+    res.json({
+        treinamento:req.session.treinamento,
+        ano:req.session.ano 
+    })
+});
+
 app.get("/:slug",(req,res)=>{
     //rota de busca por slug
     var slug = req.params.slug;
