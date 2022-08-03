@@ -9,9 +9,12 @@ const connection = require("./database/database");
 //Importa or arquivo de rota do categories
 const categoriesController=require("./categories/CategoriesController");
 const articlesController =require("./articles/ArticlesController");
+const usersController =require("./users/UsersController");
 
 const Article = require("./articles/Article");
 const Category =require("./categories/Category");
+const User =  require("./users/User");
+
 
 //View engine (Motor de redenrização de html)
 app.set('view engine','ejs');
@@ -54,7 +57,7 @@ app.get("/",(req,res)=>{
 Tambem é um prefixo de tudo que vai antes do barra categories*/
 app.use("/",categoriesController);
 app.use("/",articlesController);
-
+app.use("/",usersController);
 
 app.get("/:slug",(req,res)=>{
     //rota de busca por slug
