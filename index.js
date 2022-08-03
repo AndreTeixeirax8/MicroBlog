@@ -5,6 +5,7 @@ Link para tradução = https://www.tiny.cloud/get-tiny/language-packages/
 const express = require("express");
 const app =express();
 const bodyParser = require("body-parser");
+const session = require ("express-session");
 const connection = require("./database/database");
 //Importa or arquivo de rota do categories
 const categoriesController=require("./categories/CategoriesController");
@@ -18,6 +19,14 @@ const User =  require("./users/User");
 
 //View engine (Motor de redenrização de html)
 app.set('view engine','ejs');
+
+//Sessions
+//300000000 milesegundos = 3,4 dias
+//3000000      ||       = 50  minutos 
+app.use(session({
+    secret:"palavra_aleatoria",
+    cookie:{maxAge:30000}//tempo de expiração do cookie valor em milessegundos aqui equivale a 50 minutos
+}));
 
 //Arquivos staticos
 app.use(express.static('public'));
