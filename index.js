@@ -25,7 +25,7 @@ app.set('view engine','ejs');
 //3000000      ||       = 50  minutos 
 app.use(session({
     secret:"palavra_aleatoria",
-    cookie:{maxAge:30000}//tempo de expiração do cookie valor em milessegundos aqui equivale a 50 minutos
+    cookie:{maxAge:3000000 }//tempo de expiração do cookie valor em milessegundos aqui equivale a 50 minutos
 }));
 
 //Arquivos staticos
@@ -68,7 +68,7 @@ app.use("/",categoriesController);
 app.use("/",articlesController);
 app.use("/",usersController);
 
-//rota de seção
+/*rota de seção testes
 app.get("/session",(req,res)=>{
     req.session.treinamento="Formação nodeJS"
     req.session.ano = 2019
@@ -80,6 +80,8 @@ app.get("/leitura",(req,res) =>{
         ano:req.session.ano 
     })
 });
+*/
+
 
 app.get("/:slug",(req,res)=>{
     //rota de busca por slug
