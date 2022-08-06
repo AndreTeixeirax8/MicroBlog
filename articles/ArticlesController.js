@@ -17,7 +17,7 @@ router.get("/admin/articles",adminAuth,(req,res)=>{
     });
 });
 
-router.get("/admin/articles/new",adminAuth,(req,res)=>{
+router.get("/admin/articles/new",(req,res)=>{
     Category.findAll().then(categories =>{//Aqui passamos a lista de categorias para a pagina new(view)
         res.render("admin/articles/new",{categories:categories});
     })
