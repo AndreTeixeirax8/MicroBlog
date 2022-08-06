@@ -140,5 +140,6 @@ router.get("/articles/page/:num",(req,res)=>{
     })
 });
 
+
 //Exportar essa variavel para link com o arquivo do index.js
 module.exports= router;
