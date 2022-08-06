@@ -4,15 +4,18 @@ const router = express.Router();
 const User = require("./User");
 const bcrypt= require('bcryptjs');
 const session = require("express-session");
+//Requisição do Middlewares de  seguraça
+const adminAuth = require("../middlewares/adminAuth");
 
-router.get("/admin/users",(req,res)=>{
+//Rota da listagems de users
+router.get("/admin/users",adminAuth,(req,res)=>{
     User.findAll().then(users =>{
         //passa uma lista de usuarios para a view
         res.render("admin/users/index",{users:users});
     });
 });
 
-router.get("/admin/users/create",(req,res)=>{
+router.get("/admin/users/create",adminAuth,(req,res)=>{
     res.render("admin/users/create");
 });
 

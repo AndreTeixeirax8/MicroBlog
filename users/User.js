@@ -1,12 +1,12 @@
 /*Esse arquivo é responsavel pela criação da tabela categories*/
 const Sequelize = require("sequelize");
 const connection = require("../database/database");
-
+//Cria a tabela
 const User = connection.define('users',{
-    email:{
+    email:{//campo da tabela
         type:Sequelize.STRING,
         allowNull:false
-    }, password:{
+    }, password:{//campo da tabela
         type: Sequelize.STRING,
         allowNull:false
     }

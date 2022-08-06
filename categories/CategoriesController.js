@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Category = require("./Category");
 const slugify = require("slugify");
-//Requisição do Middlewares de  seguração
+//Requisição do Middlewares de  seguraça
 const adminAuth = require("../middlewares/adminAuth");
 
 router.get("/admin/categories/new",adminAuth,(req,res)=>{
