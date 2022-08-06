@@ -90,4 +90,24 @@ router.get("/logout",(req,res)=>{
     res.redirect("/");
 });
 
+//Rota de delete de usuarios 
+router.post("/users/delete",(req,res)=>{
+    var id =req.body.id;
+    if(id != undefined){
+        if(!isNaN(id)){//verifica se o id não é numerico ou não
+          User.destroy({
+                where:{//compara se é igual a variavel id
+                    id:id 
+                }
+            }).then(()=>{
+                res.redirect("/admin/users");
+            })  
+        }else{
+            res.redirect("/admin/users");
+        }
+    }else{ //se for nulo
+        res.redirect("/admin/users");
+    }
+});
+
 module.exports =router;

@@ -20,6 +20,13 @@
                     <tr>
                         <td><%= user.id %></td>
                         <td><%= user.email %></td>
+                        <td>
+                            <form method="POST" action="/users/delete" style="display: inline;"
+                            onsubmit="confirmarDelecao(event, this)">
+                                <input type="hidden" name="id" value="<%= user.id %>">
+                                <button class="btn btn-danger">Deletar</button>   
+                           </form>
+                        </td>
                     </tr>
 
                 <% }) %>
@@ -31,3 +38,16 @@
 
 
 <%-include('../../partials/footer.ejs') %>
+<script>
+    //Cofirmação para o metodo delete
+        function confirmarDelecao(event,form){
+    
+            event.preventDefault();
+            //o confirma retora um verdadeiro ou falso
+            var decision = confirm("Você tem certeza que quer excluir? O mesmo não poderá ser recuperado");
+            if(decision){//se retornar verdade ele deleta 
+                form.submit();
+            }
+        }
+    
+    </script>
